@@ -1,0 +1,16 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+  <h1>{{title}}</h1>
+  <p>BIENVENUE : {{title}}</p>
+
+  <p>{{ produits|raw }}</p>
+<!--Boucle de lecture des produits-->
+  <ul>
+    {% for datas in produits %}
+    <li>{{ datas.nom }}</li>
+      <li>{{ datas.prix }} €</li>
+    {% endfor %}
+  </ul>
+
+{% endblock %}
