@@ -1,16 +1,43 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h1>{{title}}</h1>
-  <p>BIENVENUE : {{title}}</p>
+  <h4 class="orange-text card-panel">{{title}}</h4>
+  <div class="container card-panel">
+    <p>TEST DE 2 COLLECTION : {{title}}</p>
+    <p>QUOI !!!!</p>
+    <p>{{ produits|raw }}</p>
+    <!--Boucle de lecture des produits-->
+    <ul class="collection">
+      {% for datas in produits %}
+        <li class="collection-item">{{ datas.nom }}</li>
+        <li class="collection-item">{{ datas.prix }} €</li>
+      {% endfor %}
+    </ul>
+  </div>
 
-  <p>{{ produits|raw }}</p>
-<!--Boucle de lecture des produits-->
-  <ul>
-    {% for datas in produits %}
-    <li>{{ datas.nom }}</li>
-      <li>{{ datas.prix }} €</li>
-    {% endfor %}
-  </ul>
+  <div class="container card-panel">
+    <h2 class="green-text card-panel">Test des livres : </h2>
+    <ul class="collection">
+      {% for livre in books %}
+        <li class="collection-item">
+          <img src="{{ livre.imageLivre }}">
+        </li>
+        <li class="collection-item">{{ livre.nomLivre }}</li>
+        <li class="collection-item">
+          <p>Description :</p>
+          <p>{{ livre.nomLivre }}</p>
+        </li>
+        <li class="collection-item">
+          <p>Référence : {{ livre._id }}</p>
+        </li>
+        <li class="collection-item">{{ livre.prixLivre }} €</li>
+        <li>
+          <a href="livres/{{ livre._id }}" class="btn putple lighten-2">Détails</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+
 
 {% endblock %}

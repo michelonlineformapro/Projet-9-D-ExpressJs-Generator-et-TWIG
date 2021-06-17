@@ -1,0 +1,25 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+
+    <div class="container card-panel">
+        <h2 class="green-text card-panel">Détails du livre : {{ dump(livre.nomLivre) }}</h2>
+        <ul class="collection">
+            <li class="collection-item">
+                <img src="{{ livre.imageLivre }}">
+            </li>
+            <li class="collection-item">{{ livre.nomLivre }}</li>
+            <li class="collection-item">
+                <p>Description :</p>
+                <p>{{ livre.nomLivre }}</p>
+            </li>
+            <li class="collection-item">
+                <p>Référence : {{ livre._id }}</p>
+            </li>
+            <li class="collection-item">{{ livre.prixLivre }} €</li>
+            <li>
+                <a href="/" class="btn putple lighten-2">Retour</a>
+            </li>
+        </ul>
+    </div>
+{% endblock %}
