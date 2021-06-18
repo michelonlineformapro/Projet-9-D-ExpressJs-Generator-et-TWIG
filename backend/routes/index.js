@@ -57,6 +57,7 @@ router.get('/livres/supprimer/:id', async (request, response) =>{
   let deleteLivre = await livresModel.findByIdAndRemove({
     '_id': request.params.id,
   })
+    console.log(deleteLivre)
 
     response.render('livreSupprimer', {
         title: "livre supprimer",

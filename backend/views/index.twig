@@ -1,72 +1,64 @@
 {% extends 'layout.twig' %}
 
 {% block body %}
-  <h4 class="blue-text card-panel center">{{title}}</h4>
-
-  <div class="card-panel col s12">
-
-      <!--Ajouter un livre-->
-      <form action="/ajouter-livre" method="post">
-          <h3 class="orange-text center lighten-1 card-panel">AJOUTER UN LIVRE</h3>
-          <div class="form-group">
-              <label>Nom du Livre</label>
-              <input class="form-control" type="text" name="nomLivre">
-          </div>
-
-          <div class="form-group">
-              <label>Description du Livre</label>
-              <input class="form-control" type="text" name="descriptionLivre">
-          </div>
-
-          <div class="form-group">
-              <label>Prix du Livre</label>
-              <input class="form-control" type="text" name="prixLivre">
-          </div>
-
-          <div class="form-group">
-              <label>Image du Livre</label>
-              <input class="form-control" type="text" name="imageLivre">
-          </div>
-
-          <div class="form-group">
-              <button class="col s6 waves-effect waves-light btn orange lighten-2" type="submit">Ajouter</button>
-              <button type="reset" class="col s6 waves-effect waves-light btn purple lighten-2">vider les champs</button>
-          </div>
-      </form>
-  </div>
-      <!--Fin du formulaire-->
-
+    <h4 class="blue-text card-panel center">{{ title }}</h4>
     <div class="card-panel col s12">
-        <h2 class="green-text card-panel">Liste des livres : </h2>
+        <!--Ajouter un livre-->
+        <form action="/ajouter-livre" method="post">
+            <h3 class="orange-text center lighten-1 card-panel">AJOUTER UN LIVRE</h3>
+            <div class="form-group">
+                <label>Nom du Livre</label>
+                <input class="form-control" type="text" name="nomLivre">
+            </div>
 
-    <ul class="collection card-panel">
-      {% for livre in books %}
-        <li class="collection-item">
-          <img src="{{ livre.imageLivre }}">
-        </li>
-        <li class="collection-item">{{ livre.nomLivre }}</li>
-        <li class="collection-item">
-          <p>Description :</p>
-          <p>{{ livre.nomLivre }}</p>
-        </li>
-        <li class="collection-item">
-          <p>Référence : {{ livre._id }}</p>
-        </li>
-        <li class="collection-item">{{ livre.prixLivre }} €</li>
-        <li>
-            <a href="livres/{{ livre._id }}" class="btn putple lighten-2">Détails</a>
-        </li>
-          <li class="collection-item">
-              <a href="livres/supprimer/{{ livre._id }}" class="btn red lighten-2">Supprimer</a>
-          </li>
-          <hr>
-          <br />
-          <hr>
-      {% endfor %}
-    </ul>
+            <div class="form-group">
+                <label>Description du Livre</label>
+                <input class="form-control" type="text" name="descriptionLivre">
+            </div>
+
+            <div class="form-group">
+                <label>Prix du Livre</label>
+                <input class="form-control" type="text" name="prixLivre">
+            </div>
+
+            <div class="form-group">
+                <label>Image du Livre</label>
+                <input class="form-control" type="text" name="imageLivre">
+            </div>
+
+            <div class="form-group">
+                <button class="col s6 waves-effect waves-light btn orange lighten-2" type="submit">Ajouter</button>
+                <button type="reset" class="col s6 waves-effect waves-light btn purple lighten-2">vider les champs
+                </button>
+            </div>
+        </form>
     </div>
+    <!--Fin du formulaire-->
 
 
+    <div class="row card-panel">
+        {% for livre in books %}
+        <div class="card col s4 offset-s1">
 
+                <div class="card-image">
+                    <img src="{{ livre.imageLivre }}" alt="" title="" style="padding-top: 10px"/>
+                </div>
+                <div class="card-content">
+                    <p>{{ livre.nomLivre }}</p>
+                    <p>Description :</p>
+                    <p>{{ livre.nomLivre }}</p>
+                    <p>Référence : {{ livre._id }}</p>
+
+                    <p>{{ livre.prixLivre }} €</p>
+                    <div class="card-action col s12">
+                        <a href="livres/{{ livre._id }}" class="btn putple center lighten-2" style="width: 100%">Détails</a>
+                        <br><br>
+                        <a href="livres/supprimer/{{ livre._id }}" class="btn center red lighten-2" style="width: 100%">Supprimer</a>
+                    </div>
+                </div>
+
+        </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

@@ -4,8 +4,25 @@
 <h4 class="blue-text card-panel center">{{title}}</h4>
 
 <div class="card-panel col s12">
-    <h1 class="red-text">Element supprimer</h1>
-    <a href="/" class="btn green lighten-1">Retour</a>
+        <h2 class="green-text card-panel">Supprimer le livre : {{ dump(deleteLivre.nomLivre) }}</h2>
+        <ul class="collection">
+            <li class="collection-item">
+                <img src="{{ deleteLivre.imageLivre }}" alt="" title="" width="50%">
+            </li>
+            <li class="collection-item">{{ deleteLivre.nomLivre }}</li>
+            <li class="collection-item">
+                <p>Description :</p>
+                <p>{{ deleteLivre.nomLivre }}</p>
+            </li>
+            <li class="collection-item">
+                <p>Référence : {{ deleteLivre._id }}</p>
+            </li>
+            <li class="collection-item">{{ deleteLivre.prixLivre }} €</li>
+            <li>
+                <a href="/" class="btn putple lighten-2">Retour</a>
+            </li>
+        </ul>
+    <a href="/" class="btn green lighten-1">CONFIRMER</a>
 </div>
 
 {% endblock %}
